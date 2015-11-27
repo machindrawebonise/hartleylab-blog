@@ -1,0 +1,15 @@
+/*
+Theme Name: Hartleylab Blog Theme
+Theme URI: http://hartleylab.com
+Author: Hartley Lab
+Author URI: http://hartleylab.com
+Description: A Hartleylab Blog Theme
+Version: 1.0
+*/
+
+@import url(css/bootstrap.min.css);
+@import url(css/theme.css);
+@import url(grid/css/component.css);
+@import url(css/custom.css);
+@import url(css/blog-style.css);
+@import url(css/blog-style.css);
