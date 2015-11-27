@@ -1,10 +1,6 @@
 <?php
-/*
- * Template Name: Blog Page Template
- * Description: A Hartleylab Blog Listing Page Template.
- */
+    global $post;
 ?>
-
 <!doctype html>
 <html lang="en">
    <head>
@@ -18,9 +14,7 @@
 
       <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,300,700,400italic,500%7CMontserrat:400,700" rel="stylesheet" type="text/css">
 
-      <link href="<?php echo get_template_directory_uri(); ?>/style.css" rel="stylesheet" type="text/css" media="all"/>
-
-      <script src="<?php echo get_template_directory_uri(); ?>/grid/js/modernizr.custom.js"></script>
+       <link href="<?php echo get_template_directory_uri(); ?>/style.css" rel="stylesheet" type="text/css" media="all"/>
    <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -42,15 +36,20 @@
          <ul class="slides">
             <li>
                <div class="background-image-holder background-parallax">
-                  <img alt="Slide Background" class="background-image" src="<?php echo get_template_directory_uri(); ?>/team/team.jpg">
+                  <?php echo get_the_post_thumbnail($post->ID); ?>
                </div>
                <div class="container vertical-align">
                   <div class="row">
                      <div class="col-sm-12 text-center">
-                        <h2 class="text-white">
-                        	Hartley is a family of digital thinkers &amp; makers!
-                        </h2>
-                        <h1 class="text-white">Meet our team of Hartlers</h1>
+                        <p class="text-white postDate"><?php echo date('F d, Y', strtotime($post->post_date)); ?></p>
+                        <h1 class="text-white"><?php the_title(); ?></h1>
+                         <?php
+                         $auther_id = $post->post_author;
+                         $user = get_userdata($auther_id);
+                         ?>
+                        <p class="text-white author">
+                            By&nbsp;<a href="" title="Author" class="text-white"><?php echo $user->display_name ; ?></a>
+                        </p>
                      </div>
                   </div>
                </div>
@@ -59,55 +58,34 @@
          </ul>
       </section>
 
-      <?php require_once('blog_header.php'); ?>
-     	<?php require_once('blog_main.php'); ?>
+     	<section>
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12">
+                <?php
+                $content = apply_filters('the_content', $post->post_content);
+                //$content = wp_trim_words( $content, 50, "... <a href='". get_the_permalink($blog->ID) ."'>Read More</a>" );
+                echo $content;
+                ?>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <footer class="footer-6">
 	      <div class="container">
 		      <div class="row">
 			      <div class="col-sm-12">
 				      <div class="footer-lower">
-				      	<span>&copy; Copyright <?php echo date('Y'); ?> Hartley Lab, All Rights Reserved.</span>
+				      	<span>&copy; Copyright 2015 Hartley Lab, All Rights Reserved.</span>
 				      </div>
 			      </div>
 		      </div><!--end of row-->
 	      </div><!--end of container-->
       </footer>
     </div>
-
 		<script src="<?php echo get_template_directory_uri(); ?>/js/jquery.min.js"></script>
-
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
-
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/plugins/ScrollToPlugin.min.js"></script>
-
-        <script src="<?php echo get_template_directory_uri(); ?>/js/bootstrap.min.js"></script>
-
-        <script src="<?php echo get_template_directory_uri(); ?>/js/skrollr.min.js"></script>
-
-        <script src="<?php echo get_template_directory_uri(); ?>/js/flexslider.min.js"></script>
-
-        <script src="<?php echo get_template_directory_uri(); ?>/js/lightbox.min.js"></script>
-
-        <script src="<?php echo get_template_directory_uri(); ?>/js/twitterfetcher.min.js"></script>
-
-        <script src="<?php echo get_template_directory_uri(); ?>/js/spectragram.min.js"></script>
-
         <script src="<?php echo get_template_directory_uri(); ?>/js/smooth-scroll.min.js"></script>
-
-        <script src="<?php echo get_template_directory_uri(); ?>/js/jquery.plugin.min.js"></script>
-
-        <script src="<?php echo get_template_directory_uri(); ?>/js/countdown.min.js"></script>
-
-        <script src="<?php echo get_template_directory_uri(); ?>/js/placeholders.min.js"></script>
-
     	<script src="<?php echo get_template_directory_uri(); ?>/js/scripts.js"></script>
-    	<script src="<?php echo get_template_directory_uri(); ?>/grid/js/imagesloaded.pkgd.min.js"></script>
-		<script src="<?php echo get_template_directory_uri(); ?>/grid/js/masonry.pkgd.min.js"></script>
-		<script src="<?php echo get_template_directory_uri(); ?>/grid/js/classie.js"></script>
-		<script src="<?php echo get_template_directory_uri(); ?>/grid/js/cbpGridGallery.js"></script>
-		<script>
-			new CBPGridGallery( document.getElementById( 'grid-gallery' ) );
-		</script>
    </body>
 </html>

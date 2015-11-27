@@ -45,12 +45,12 @@ $blog_posts = query_posts($args);
 								?>
 							<span class="category"><a href="#"><?php echo $term_list; ?></a></span>
 							</div>
-						  <a href="#" class="blogTitle"><?php echo $blog->post_title; ?></a>
+						  <a href="<?php echo get_the_permalink($blog->ID); ?>" class="blogTitle"><?php echo $blog->post_title; ?></a>
 						  <p class="postDate"><?php echo date('F d, Y', strtotime($blog->post_date)); ?></p>
 						  <p class="blogEntry">
 							<?php
 								$content = $blog->post_content;
-								$content = wp_trim_words( $content, 80, "... <a href='". get_the_permalink($blog->ID) ."'>Read More</a>" );
+								$content = wp_trim_words( $content, 50, "... <a href='". get_the_permalink($blog->ID) ."'>Read More</a>" );
 								echo $content;
 							?>
 						  </p>
