@@ -1,0 +1,100 @@
+.blogWrapper{
+	padding: 50px 0;
+	background: #eee;
+}
+
+.blogListCat {
+  background: #f5f5f5;
+  margin-bottom: 20px;
+}
+.blogListCat li {
+  display: inline-block;
+}
+.blogListCat li span {
+  display: inline-block;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  font-size: 16px;
+  line-height: 20px;
+  color: #959595;
+  padding: 25px 20px;
+  border-bottom: 3px solid transparent;
+  cursor: pointer;
+}
+.txtCenter {
+  text-align: center;
+}
+
+.postList{
+	margin-bottom: 40px;
+	background: #fff;
+}
+.postList .btmArea{
+	padding: 7%;
+	overflow: hidden;
+}
+.postList .blogTitle {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 30px;
+  text-transform: none;
+  color: #222;
+  display: block;
+  padding: 10px 0;
+}
+.postList .blogTitle:hover{
+	color: #2386c7;
+}
+.blogCategory{
+	position: relative;
+}
+.blogCategory .category:after {
+  background: #2386c7;
+  width: 25px;
+  position: absolute;
+  left: -30px;
+  top: 50%;
+  margin-top: -3px;
+  height: 6px;
+  content: "";
+}
+.postList .postDate{
+	font-size: 12px;
+	margin-bottom: 10px;
+}
+.postList .blogEntry,
+.postList .blogMeta{
+  font-size: 15px;
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0px;
+  color: #777777;
+  margin-bottom: 10px;
+}
+.postList .blogMeta{
+	padding: 15px 0;
+	border-top: 1px solid #ccc;
+	text-align: right;
+}
+
+.postList .topArea a:hover{
+	opacity: 0.8;
+	-webkit-transition: opacity 0.3s;
+	    -moz-transition: opacity 0.3s;
+	    -ms-transition: opacity 0.3s;
+	    -o-transition: opacity 0.3s;
+	    transition: opacity 0.3s;
+}
+.grid li{
+	width: 33.33%;
+}
+@media (max-width: 991px){
+	.grid li {
+	  width: 50%;
+	}
+}
+@media (max-width: 767px){
+	.grid li {
+	  width: 100%;
+	}
+}
