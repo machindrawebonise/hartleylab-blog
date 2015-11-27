@@ -14,7 +14,7 @@
       <meta property="og:description" content="Hartley Lab is a professionally managed Agile Product Development Company servicing clients all over the world. Hartley Lab was formed by people with over 12 years’ experience in Product development and project management with a clear goal to Make IT Simple" />
       <title>Hartley Lab - Make I.T. Simple</title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+      <link rel="icon" type="image/png" sizes="32x32" href="<?php echo get_template_directory_uri(); ?>/img/favicon-32x32.png">
 
       <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,300,700,400italic,500%7CMontserrat:400,700" rel="stylesheet" type="text/css">
 
@@ -75,11 +75,11 @@
       </footer>
     </div>
 
-		<script src="<?php echo get_template_directory_uri(); ?>/js/jquery.min.js"></script>
+        <script src="<?php echo get_template_directory_uri(); ?>/js/jquery.min.js"></script>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
 
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/plugins/ScrollToPlugin.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/plugins/ScrollToPlugin.min.js"></script>
 
         <script src="<?php echo get_template_directory_uri(); ?>/js/bootstrap.min.js"></script>
 
@@ -87,19 +87,9 @@
 
         <script src="<?php echo get_template_directory_uri(); ?>/js/flexslider.min.js"></script>
 
-        <script src="<?php echo get_template_directory_uri(); ?>/js/lightbox.min.js"></script>
-
-        <script src="<?php echo get_template_directory_uri(); ?>/js/twitterfetcher.min.js"></script>
-
         <script src="<?php echo get_template_directory_uri(); ?>/js/spectragram.min.js"></script>
 
         <script src="<?php echo get_template_directory_uri(); ?>/js/smooth-scroll.min.js"></script>
-
-        <script src="<?php echo get_template_directory_uri(); ?>/js/jquery.plugin.min.js"></script>
-
-        <script src="<?php echo get_template_directory_uri(); ?>/js/countdown.min.js"></script>
-
-        <script src="<?php echo get_template_directory_uri(); ?>/js/placeholders.min.js"></script>
 
     	<script src="<?php echo get_template_directory_uri(); ?>/js/scripts.js"></script>
     	<script src="<?php echo get_template_directory_uri(); ?>/grid/js/imagesloaded.pkgd.min.js"></script>

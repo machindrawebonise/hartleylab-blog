@@ -93,22 +93,6 @@
 /* Services End */
 
 /* NEW STYLE */
-/*.blocks{
-  background: #f7f7f7;
-}
-.blocks p{
-  color: #333;
-}
-.blocks h1,
-.blocks.jobs a,
-.blocks .socialIcons li .fa,
-.blocks.jobs .fa{
-  color: #2386c7;
-}
-.newsletter input[type='submit'] {
-  background: #2386c7;
-  color: #fff;
-}*/
 .blogCatPost {
     margin-bottom: 70px;
 }

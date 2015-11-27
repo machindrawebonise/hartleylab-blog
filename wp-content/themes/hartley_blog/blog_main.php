@@ -1,9 +1,26 @@
 <?php
+
+if($_GET['cat_id'] == '')
+{
+	$tax_array = array();
+}
+else
+{
+	$tax_array = array(
+			array(
+					'taxonomy' => 'category',
+					'field' => 'id',
+					'terms' => $_GET['cat_id'], // Where term_id of Term 1 is "1".
+					'include_children' => false
+			)
+	);
+}
 $args = array(
 	'post_type' => 'post',
 	'post_status' => 'publish',
 	'posts_per_page' => 10,
 	'order'    => 'DESC',
+	'tax_query' => $tax_array
 );
 
 $blog_posts = query_posts($args);
