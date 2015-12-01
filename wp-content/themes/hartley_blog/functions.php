@@ -37,5 +37,71 @@ function my_image_sizes($sizes) {
 
     return $newsizes;
 }
+add_action( 'wp_ajax_nopriv_get_recent_posts', 'get_recent_posts' );
+add_action( 'wp_ajax_get_recent_posts', 'get_recent_posts' );
+
+function get_recent_posts()
+{
+    header("Access-Control-Allow-Origin: http://local.hartleylab.com");
+    $args = array(
+        'post_type' => 'post',
+        'post_status' => 'publish',
+        'posts_per_page' => 3,
+        'order'    => 'DESC',
+    );
+
+    $blog_posts = query_posts($args);
+
+    $html = "";
+
+    foreach($blog_posts as $blog)
+    {
+        $terms = get_the_terms( $blog->ID, 'category' );
+        $i = 0;
+        if(count($terms > 0))
+        {
+            foreach($terms as $term) {
+                if($i == (count($terms) - 1) )
+                {
+                    $term_list = $term->name;
+                }
+                else
+                {
+                    $term_list = $term->name . ", ";
+                }
+            }
+        }
+
+        $content = $blog->post_content;
+        $content = wp_trim_words( $content, 50, "");
+
+        $auther_id = $blog->post_author;
+        $user = get_userdata($auther_id);
+
+        $html .= '<div class="col-md-4 col-sm-6">';
+        $html .= '<div class="blog-snippet-1 postList postBlogHome">';
+        $html .= '<div class="btmArea">';
+        $html .= '<div class="blogCategory">';
+        $html .= '<span class="category"><a href="#">'.$term_list.'</a></span>';
+        $html .= '</div>';
+        $html .= '<a href="'. get_the_permalink($blog->ID).'" class="blogTitle">'. get_the_title($blog->ID).'</a>';
+        $html .= '<p class="postDate">'. date('F d, Y', strtotime($blog->post_date)) .'</p>';
+        $html .= '<p class="blogEntry">';
+        $html .= $content;
+        $html .= '</p>';
+        $html .= '<a class="text-link" href="'. get_the_permalink($blog->ID).'">Read the rest<i class="icon ti ti-arrow-right arrow_right"></i></a>';
+        $html .= '<div class="blogMeta clearfix">';
+        $html .= '<span class="author">';
+        $html .= 'By&nbsp;<a href="" title="Author" rel="author">'. $user->display_name .'</a>';
+        $html .= '</span>';
+        $html .= '</div>';
+        $html .= '</div>';
+        $html .= '</div>';
+        $html .= '</div>';
+    }
+
+    $response = array("success" => true, data => $html);
+    wp_send_json($response);
+}
 ?>
 

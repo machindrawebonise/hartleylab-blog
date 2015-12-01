@@ -67,10 +67,11 @@ $blog_posts = query_posts($args);
 						  <p class="blogEntry">
 							<?php
 								$content = $blog->post_content;
-								$content = wp_trim_words( $content, 50, "... <a href='". get_the_permalink($blog->ID) ."'>Read More</a>" );
+								$content = wp_trim_words( $content, 50, "");
 								echo $content;
 							?>
 						  </p>
+							<a class="text-link" href="<?php echo get_the_permalink($blog->ID); ?>">Read the Rest<i class="icon ti ti-arrow-right arrow_right"></i></a>
 						  <div class="blogMeta clearfix">
 								<span class="author">
 									<?php
