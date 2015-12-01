@@ -42,7 +42,7 @@ add_action( 'wp_ajax_get_recent_posts', 'get_recent_posts' );
 
 function get_recent_posts()
 {
-    header("Access-Control-Allow-Origin: http://local.hartleylab.com");
+    header("Access-Control-Allow-Origin: " . MAIN_SITE_URL);
     $args = array(
         'post_type' => 'post',
         'post_status' => 'publish',
