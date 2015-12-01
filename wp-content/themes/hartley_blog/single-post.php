@@ -30,13 +30,17 @@
 
     <?php require_once('inc_header.php'); ?>
 
+    <?php
+    $auther_id = $post->post_author;
+    $user = get_userdata($auther_id);
+    ?>
 
     <div class="main-container">
       <section class="hero-slider large-image short-header">
          <ul class="slides">
             <li>
                <div class="background-image-holder background-parallax">
-                  <?php $thumb = get_the_post_thumbnail($post->ID); ?>
+                  <?php $thumb = get_the_post_thumbnail($post->ID, '' , array('class' => "background-image")); ?>
                     <?php if(strpos($thumb, 'iframe') === false) { echo $thumb; }?>
 
                </div>
@@ -65,13 +69,15 @@
                         <div class="col-sm-12 text-center">
                             <div class="singleBlogDtls"><span><a href="#"><?php echo $term_list; ?></a></span><span class="text-white">&nbsp;|&nbsp;</span><span class="text-white postDate"><?php echo date('F d, Y', strtotime($post->post_date)); ?></span></div>
                             <h1 class="text-white"><?php the_title(); ?></h1>
-                            <?php
-                            $auther_id = $post->post_author;
-                            $user = get_userdata($auther_id);
-                            ?>
+
+                            <p class="textBy">By</p>
+                            <div class="authorImg">
+                                <?php echo get_avatar($user->ID, 40); ?>
+                            </div>
                             <p class="text-white author">
-                                By&nbsp;<a href="" title="Author" class="text-white"><?php echo $user->display_name ; ?></a>
-                                </span>
+                                <a href="" title="Author" class="text-white"><?php echo $user->display_name ; ?></a>
+                            </p>
+
                         </div>
                     </div>
                 </div>
@@ -79,32 +85,36 @@
             </li>
          </ul>
       </section>
+        <?php if(strpos($thumb, 'iframe') !== false) { ?>
         <section class="blogVideoWrap">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
-                        <div class="blogContent">
-                            <?php if(strpos($thumb, 'iframe') !== false) { echo $thumb; }?>
+                        <div class="article-single">
+                            <?php echo $thumb; ?>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-     	<section>
-        <div class="container">
-          <div class="row">
-            <div class="col-sm-12">
-                <div class="blogContent">
-                    <?php
-                        $content = apply_filters('the_content', $post->post_content);
-                        //$content = wp_trim_words( $content, 50, "... <a href='". get_the_permalink($blog->ID) ."'>Read More</a>" );
-                        echo $content;
-                    ?>
+        <?php } ?>
+
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="article-single">
+                            <?php
+                            $content = apply_filters('the_content', $post->post_content);
+                            //$content = wp_trim_words( $content, 50, "... <a href='". get_the_permalink($blog->ID) ."'>Read More</a>" );
+                            echo $content;
+                            ?>
+                        </div>
+                    </div>
                 </div>
             </div>
-          </div>
-        </div>
-      </section>
+        </section>
+
       <footer class="footer-6">
 	      <div class="container">
 		      <div class="row">
